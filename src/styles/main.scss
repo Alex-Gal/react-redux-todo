@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400&display=swap');
+
+@mixin AllButtons {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Prompt', sans-serif;
+    background: rgb(109, 160, 168);
+    color: rgb(238, 238, 238);
+    // border: 0;
+    border-radius: 5px;
+}
+
+@mixin InputsText {
+    padding: 0px;
+    margin: 0px;
+    font-style: italic;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: rgb(238, 238, 238);
+    font-family: 'Prompt', sans-serif;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+}
+
+.App {
+    width: 500px;
+    height: 700px;
+    margin-top: 20px;
+    border: 1px solid rgb(109, 160, 168);
+    background: no-repeat center/100% url("./img/Water.png");
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.Title {
+    margin: 0px;
+    padding: 15px;
+    background: rgb(109, 160, 168);
+    color: rgb(255, 255, 255);
+}
+
+.ControlsBar {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+    margin: 5px;
+    
+}
+
+.ControlsBarInput {
+    padding: 10px;
+    width: 100%;
+    font-family: 'Prompt', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.ControlsBarButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.ControlsBarButtonsNotActive {
+    height: 50px;
+    width: 33%;
+    @include AllButtons;
+}
+
+.ControlsBarButtonsActive {
+    height: 50px;
+    width: 33%;
+    @include AllButtons;
+    background: rgb(14, 187, 255);
+}
+
+.ControlsBar hr {
+    width: 100%;
+    height: 1px;
+    background: rgb(109, 160, 168);
+}
+
+.TaskList {
+    margin: 5px;
+    height: 300px;
+    overflow-y: auto;
+}
+
+.TaskItem {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(238, 238, 238);
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(173, 173, 173);
+    border-left: 1px solid rgb(173, 173, 173);
+}
+
+.TaskItemValues p{
+    margin: 0;
+    padding: 0 5px;
+    color: rgb(109, 160, 168);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
+.TasksButtonBlock {
+    display: flex;
+    align-items: center;
+}
+
+.TasksButton {
+    height: 70%;
+    margin-left: 2px; 
+    @include AllButtons;
+}
+
+.NotActiveTask {
+    height: 70%;
+    margin-left: 2px; 
+    @include AllButtons;
+    background: rgb(224, 100, 100);
+}
+
+.Form {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+    margin: 5px;
+}
+
+.FormInput {
+    padding: 8px;
+    width: 100%;
+    font-family: 'Prompt', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.enterTaskName {
+    @include InputsText
+}
+
+.selectImportance {
+    @include InputsText
+}
+
+.addTaskButton {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.addTaskButton:disabled {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Prompt', sans-serif;
+    background: rgb(197, 197, 197);
+    color: rgb(0, 0, 0);
+    // border: 0;
+    border-radius: 5px;
+}
+
+.addTaskButton:enabled {
+    @include AllButtons
+}
