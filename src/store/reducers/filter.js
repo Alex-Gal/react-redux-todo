@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const props = {
     name: 'filter',
     initialState: 0,
-    reducer: {
-        increment: (state) => {
-            state = state + 1;
+    reducers: {
+        filter: (state) => {
+            return state + 1;
         }
     }
 }

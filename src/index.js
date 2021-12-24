@@ -4,6 +4,8 @@ import {App} from './App.jsx';
 import './styles/main.scss';
 import { ErrorBoundary } from './error-boundary/ErrorBoundary';
 import { store } from './store/store.js';
+// import { filter } from 'core-js/core/array';
+import { filterAction } from './store/actions/action-filter.js';
 
 ReactDOM.render(
   <ErrorBoundary>
@@ -14,3 +16,4 @@ ReactDOM.render(
 );
 
 console.log(store.getState());
+filterAction();
