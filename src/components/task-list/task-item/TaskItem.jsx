@@ -1,8 +1,8 @@
-import React, {useContext} from "react";
+import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
-import { TaskListContext } from '../TaskListContext';
+import {TaskListContext} from '../TaskListContext';
 
-export const TaskItem = ({ id, name, important, active}) => {
+export const TaskItem = ({id, name, important, active}) => {
 
     const {changeTaskImportance, deleteTask, doneTask} = useContext(TaskListContext);
 
@@ -16,7 +16,7 @@ export const TaskItem = ({ id, name, important, active}) => {
 
     const changeTaskImportanceFunc = () => {
         changeTaskImportance(id);
-    }
+    };
 
     return (
         <div className={'TaskItem'}>
@@ -40,4 +40,4 @@ TaskItem.propTypes = {
     name: PropTypes.string.isRequired,
     important: PropTypes.any.isRequired,
     active: PropTypes.bool.isRequired
-}
+};

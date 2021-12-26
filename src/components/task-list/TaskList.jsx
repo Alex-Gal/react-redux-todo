@@ -1,9 +1,8 @@
-import React from "react";
-import { TaskItem } from "./task-item/TaskItem";
+import React from 'react';
+import {TaskItem} from './task-item/TaskItem';
 import PropTypes from 'prop-types';
 
-export const TaskList = ({tasks}) => {
-    return (
+export const TaskList = ({tasks}) => (
         <div className={'TaskList'}>
             {
                 tasks.map((task) => 
@@ -17,7 +16,6 @@ export const TaskList = ({tasks}) => {
             }
         </div>
     );
-};
 
 TaskList.propTypes = {
     tasks: PropTypes.arrayOf(
@@ -25,7 +23,7 @@ TaskList.propTypes = {
             id: PropTypes.number.isRequired,
             name: PropTypes.string.isRequired,
             important: PropTypes.any.isRequired,
-            active: PropTypes.bool.isRequired,
+            active: PropTypes.bool.isRequired
         })
     ).isRequired
-}
+};

@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
 export class ErrorBoundary extends React.Component {
     constructor(props) {
       super(props);
-      this.state = { hasError: false };
+      this.state = {hasError: false};
     }
   
     static getDerivedStateFromError(error) {
       // Обновить состояние с тем, чтобы следующий рендер показал запасной UI.
-      return { hasError: true };
+      return {hasError: true};
     }
   
     componentDidCatch(error, errorInfo) {

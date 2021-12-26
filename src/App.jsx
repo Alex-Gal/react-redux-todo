@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { TaskList } from './components/task-list/TaskList';
-import { ControlsBar } from './components/controls-bar/ControlsBar';
-import { LoadTasks } from './components/task-list/load-tasks/LoadTasks';
-import { TaskListContext } from './components/task-list/TaskListContext';
-import { ControlsBarContext } from './components/controls-bar/ControlsBarContext';
+import React, {useEffect, useState} from 'react';
+import {TaskList} from './components/task-list/TaskList';
+import {ControlsBar} from './components/controls-bar/ControlsBar';
+import {LoadTasks} from './components/task-list/load-tasks/LoadTasks';
+import {TaskListContext} from './components/task-list/TaskListContext';
+import {ControlsBarContext} from './components/controls-bar/ControlsBarContext';
 
 export const App = () => {
   
@@ -16,8 +16,8 @@ export const App = () => {
     LoadTasks().then((data) => {
       setTasks(data);
       setIsTasksLoaded(true);
-    })
-  }, [])
+    });
+  }, []);
 
   if (!isTasksLoaded) {
     return <div>Loading...</div>;
@@ -29,19 +29,19 @@ export const App = () => {
       return (prevTasks = newTasksArr);
     };
     setTasks(callback);
-  }
+  };
 
   const doneTask = (selectedId) => {
     const callback = (prevTasks) => {
       const newTasksArr = prevTasks.map((item) => {
-        const { id, active } = item;
+        const {id, active} = item;
         return {
           ...item,
           active: id === selectedId ? !active : active
-        }
+        };
       });
       return (prevTasks = newTasksArr);
-    }
+    };
     setTasks(callback);
   };
 
@@ -49,14 +49,14 @@ export const App = () => {
     const callback = (prevTasks) => {
 
       const newTasksArr = prevTasks.map((item) => {
-        const { id, important } = item;
+        const {id, important} = item;
         return {
           ...item,
           important: id === selectedId ? !important : important
-        }
+        };
       });
-      return (prevTasks = newTasksArr)
-    }
+      return (prevTasks = newTasksArr);
+    };
     setTasks(callback);
   };
 
@@ -65,38 +65,36 @@ export const App = () => {
       const newTasks = [...prevTasks];
       newTasks.push(newTask);
       return (prevTasks = newTasks);
-    }
+    };
     setTasks(callback);
-  }
+  };
 
   const changeDisplayedListHandler = (displayedList) => {
     setDisplayedList(displayedList);
-  }
+  };
 
-  const changeDisplayedList = (tasks, displayedList) => {
-    return displayedList === 'all' 
+  const changeDisplayedList = (tasks, displayedList) => displayedList === 'all' 
       ? tasks
       : displayedList === 'active'
         ? tasks.filter((item) => item.active)
-        : tasks.filter((item) => !item.active) 
-  };
+        : tasks.filter((item) => !item.active);
 
   const filterInputHandler = (filterInput) => {
     setFilterInput(filterInput);
-  }
+  };
   
   const filterInputText = (tasks, filterInput) => {
     if (filterInput === '') {
       return tasks;
     } 
     return tasks.filter(({name}) => name.toLowerCase().includes(filterInput.toLowerCase()));
-  }
+  };
 
   const filteredTasks = changeDisplayedList(tasks, displayedList);
   const filteredInputByText = filterInputText(filteredTasks, filterInput);
 
   return (
-    <div className="App">
+    <div className='App'>
       <h2 className='Title'>TODO APP</h2>
       <ControlsBarContext.Provider value={{addNewTask: addNewTask}}>
         <ControlsBar 
@@ -110,7 +108,7 @@ export const App = () => {
         {
           changeTaskImportance: changeTaskImportance, 
           deleteTask: deleteTask, 
-          doneTask: doneTask,
+          doneTask: doneTask
         }
       }>
         <TaskList 
@@ -118,4 +116,4 @@ export const App = () => {
       </TaskListContext.Provider>
     </div>
   );
-}
+};
