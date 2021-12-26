@@ -90,6 +90,12 @@ export const App = () => {
     } 
     return tasks.filter(({name}) => name.toLowerCase().includes(filterInput.toLowerCase()));
   };
+  // const filterInputText = (tasks, filterInput) => {
+  //   if (filterInput === '') {
+  //     return tasks;
+  //   } 
+  //   return tasks.filter(({name}) => name.toLowerCase().includes(filterInput.toLowerCase()));
+  // };
 
   const filteredTasks = changeDisplayedList(tasks, displayedList);
   const filteredInputByText = filterInputText(filteredTasks, filterInput);
