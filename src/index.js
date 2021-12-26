@@ -1,19 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
 import {App} from './App.jsx';
 import './styles/main.scss';
 import {ErrorBoundary} from './error-boundary/ErrorBoundary';
 import {store} from './store/store.js';
-// import { filter } from 'core-js/core/array';
-import {filterAction} from './store/actions/action-filter.js';
+// import {filterAction} from './store/actions/action-filter.js';
 
 ReactDOM.render(
-  <ErrorBoundary>
-    <App />
-  </ErrorBoundary>
+  <Provider store={store}>
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  </Provider>
   ,
   document.getElementById('app')
 );
 
-console.log(store.getState());
-filterAction();
+store.subscribe(() => {
+  console.log(store.getState());
+});

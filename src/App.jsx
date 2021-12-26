@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {Provider} from 'react-redux';
 import {TaskList} from './components/task-list/TaskList';
 import {ControlsBar} from './components/controls-bar/ControlsBar';
 import {LoadTasks} from './components/task-list/load-tasks/LoadTasks';

@@ -24,10 +24,7 @@
   },
   "homepage": "https://github.com/Alex-Gal/react-redux-todo#readme",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.6.2",
     "core-js": "^3.19.1",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-react": "^7.28.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -37,9 +34,12 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
+    "@reduxjs/toolkit": "^1.7.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-react": "^7.28.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
     "node-sass": "^6.0.1",
