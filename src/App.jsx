@@ -1,27 +1,31 @@
 import React, {useEffect, useState} from 'react';
 import {TaskList} from './components/task-list/TaskList';
 import {ControlsBar} from './components/controls-bar/ControlsBar';
-import {LoadTasks} from './components/task-list/load-tasks/LoadTasks';
+// import {LoadTasks} from './components/task-list/load-tasks/LoadTasks';
 import {TaskListContext} from './components/task-list/TaskListContext';
 import {ControlsBarContext} from './components/controls-bar/ControlsBarContext';
+import { useSelector, useDispatch } from 'react-redux';
 
 export const App = () => {
+
+  const tasks = useSelector(state => state.tasksReducer.tasks);
+  console.log('tasksRedux', tasks);
   
-  const [tasks, setTasks] = useState(null);
+  // const [tasks, setTasks] = useState(null);
   const [displayedList, setDisplayedList] = useState('active');
   const [filterInput, setFilterInput] = useState('');
-  const [isTasksLoaded, setIsTasksLoaded] = useState(false);
+  // const [isTasksLoaded, setIsTasksLoaded] = useState(false);
 
-  useEffect(() => {
-    LoadTasks().then((data) => {
-      setTasks(data);
-      setIsTasksLoaded(true);
-    });
-  }, []);
+  // useEffect(() => {
+  //   LoadTasks().then((data) => {
+  //     setTasks(data);
+  //     setIsTasksLoaded(true);
+  //   });
+  // }, []);
 
-  if (!isTasksLoaded) {
-    return <div>Loading...</div>;
-  }
+  // if (!isTasksLoaded) {
+  //   return <div>Loading...</div>;
+  // }
 
   const deleteTask = (selectedId) => {
     const callback = (prevTasks) => {
