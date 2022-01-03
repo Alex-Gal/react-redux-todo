@@ -3,20 +3,7 @@ import PropTypes from 'prop-types';
 import {TaskListContext} from '../TaskListContext';
 
 export const TaskItem = ({id, name, important, active}) => {
-
     const {changeTaskImportance, deleteTask, doneTask} = useContext(TaskListContext);
-
-    const deleteTaskFunc = () => {
-        deleteTask(id);
-    };
-
-    const doneTaskFunc = () => {
-        doneTask(id);
-    };
-
-    const changeTaskImportanceFunc = () => {
-        changeTaskImportance(id);
-    };
 
     return (
         <div className={'TaskItem'}>
@@ -27,9 +14,9 @@ export const TaskItem = ({id, name, important, active}) => {
             </div>
 
             <div className={'TasksButtonBlock'}>
-                <button onClick={doneTaskFunc} className={active ? 'TasksButton' : 'NotActiveTask'}>Done</button>
-                <button onClick={deleteTaskFunc} className={'TasksButton'}>Delete</button>
-                <button onClick={changeTaskImportanceFunc} className={'TasksButton'}>Importance</button>
+                <button onClick={() => doneTask(id)} className={active ? 'TasksButton' : 'NotActiveTask'}>Done</button>
+                <button onClick={() => deleteTask(id)} className={'TasksButton'}>Delete</button>
+                <button onClick={() => changeTaskImportance(id)} className={'TasksButton'}>Importance</button>
             </div>
         </div>
     );

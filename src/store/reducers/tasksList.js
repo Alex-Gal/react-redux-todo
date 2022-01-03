@@ -1,8 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const props = {
-    name: 'filterInputText',
-    initialState: '',
+    name: 'tasksList',
+    initialState: {
+        someInputStr: 'someInputStr someInputStr',
+        filterStr: '',
+        comments: null,
+        isShowCommentsWithLike: true
+    },
     reducers: {
         filterInputText: (state, payload) => {
             state.someInitialState = action.payload;

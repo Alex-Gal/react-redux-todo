@@ -1,8 +1,8 @@
 import React from 'react';
-import {Form} from './Form';
-import PropTypes from 'prop-types';
+import { Form } from './Form';
+import PropTypes from "prop-types";
 
-export const ControlsBar = ({displayedList, filterInput, filterInputHandler, changeDisplayedListHandler}) => {
+export const ControlsBar = ({ displayedList, filterInput, filterInputHandler, changeDisplayedListHandler }) => {
     const filterInputFunc = (e) => {
         filterInputHandler(e.target.value);
     };

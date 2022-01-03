@@ -1,4 +1,4 @@
-import {configureStore, createStore} from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import {reducers} from './reducers';
 // import {reducer} from './reducers/filterInputText';
 

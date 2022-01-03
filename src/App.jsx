@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {Provider} from 'react-redux';
 import {TaskList} from './components/task-list/TaskList';
 import {ControlsBar} from './components/controls-bar/ControlsBar';
 import {LoadTasks} from './components/task-list/load-tasks/LoadTasks';
@@ -70,6 +69,9 @@ export const App = () => {
     setTasks(callback);
   };
 
+
+//filters block
+
   const changeDisplayedListHandler = (displayedList) => {
     setDisplayedList(displayedList);
   };
@@ -90,12 +92,6 @@ export const App = () => {
     } 
     return tasks.filter(({name}) => name.toLowerCase().includes(filterInput.toLowerCase()));
   };
-  // const filterInputText = (tasks, filterInput) => {
-  //   if (filterInput === '') {
-  //     return tasks;
-  //   } 
-  //   return tasks.filter(({name}) => name.toLowerCase().includes(filterInput.toLowerCase()));
-  // };
 
   const filteredTasks = changeDisplayedList(tasks, displayedList);
   const filteredInputByText = filterInputText(filteredTasks, filterInput);
