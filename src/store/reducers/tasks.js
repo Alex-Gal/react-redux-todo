@@ -15,6 +15,14 @@ const tasksSlice = {
     },
     reducers: {
         deleteTask(state, action) {
+            console.log(state);
+            console.log(action);
+            console.log(action.payload);
+            console.log(action.payload.id);
+            state.tasks = state.tasks.filter((tasks) => tasks.id !== action.payload.id);
+            // const newTasksArr = prevTasks.filter((item) => item.id !== selectedId);
+            // return (prevTasks = newTasksArr);
+
             console.log('state', state);
             console.log('action', action);
         },

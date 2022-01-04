@@ -1,9 +1,15 @@
 import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
-import {TaskListContext} from '../TaskListContext';
+
+// import {TaskListContext} from '../TaskListContext';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 export const TaskItem = ({id, name, important, active}) => {
-    const {changeTaskImportance, deleteTask, doneTask} = useContext(TaskListContext);
+    // const {doneTask, deleteTask, doneTask} = useContext(TaskListContext);
+    // const deleteTask = useSelector(state => state);
+    // console.log('deleteTask', deleteTask);
+    // const dispatch = useDispatch();
 
     return (
         <div className={'TaskItem'}>
@@ -14,9 +20,9 @@ export const TaskItem = ({id, name, important, active}) => {
             </div>
 
             <div className={'TasksButtonBlock'}>
-                <button onClick={() => doneTask(id)} className={active ? 'TasksButton' : 'NotActiveTask'}>Done</button>
-                <button onClick={() => deleteTask(id)} className={'TasksButton'}>Delete</button>
-                <button onClick={() => changeTaskImportance(id)} className={'TasksButton'}>Importance</button>
+                <button onClick={() => doneTask({id})} className={active ? 'TasksButton' : 'NotActiveTask'}>Done</button>
+                <button onClick={() => deleteTaskAction({id})} className={'TasksButton'}>Delete</button>
+                <button onClick={() => dispatch(changeTaskImportance({id}))} className={'TasksButton'}>Importance</button>
             </div>
         </div>
     );

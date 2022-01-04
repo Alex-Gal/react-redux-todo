@@ -5,11 +5,16 @@ import {ControlsBar} from './components/controls-bar/ControlsBar';
 import {TaskListContext} from './components/task-list/TaskListContext';
 import {ControlsBarContext} from './components/controls-bar/ControlsBarContext';
 import { useSelector, useDispatch } from 'react-redux';
+// import {deleteTask} from './store/reducers/tasks';
 
 export const App = () => {
 
   const tasks = useSelector(state => state.tasksReducer.tasks);
+  const dispatch = useDispatch();
+
   console.log('tasksRedux', tasks);
+  
+  // const deleteTaskAction = () => dispatch(deleteTask(tasks))
   
   // const [tasks, setTasks] = useState(null);
   const [displayedList, setDisplayedList] = useState('active');
@@ -27,13 +32,15 @@ export const App = () => {
   //   return <div>Loading...</div>;
   // }
 
-  const deleteTask = (selectedId) => {
-    const callback = (prevTasks) => {
-      const newTasksArr = prevTasks.filter((item) => item.id !== selectedId);
-      return (prevTasks = newTasksArr);
-    };
-    setTasks(callback);
-  };
+  // const deleteTask = (selectedId) => {
+  //   const callback = (prevTasks) => {
+  //     const newTasksArr = prevTasks.filter((item) => item.id !== selectedId);
+  //     return (prevTasks = newTasksArr);
+  //   };
+  //   setTasks(callback);
+  // };
+
+  
 
   const doneTask = (selectedId) => {
     const callback = (prevTasks) => {
@@ -110,8 +117,10 @@ export const App = () => {
           filterInput={filterInput} 
           filterInputHandler={filterInputHandler} />
       </ControlsBarContext.Provider>
-      
-      <TaskListContext.Provider value={
+
+        <TaskList/>
+
+      {/* <TaskListContext.Provider value={
         {
           changeTaskImportance: changeTaskImportance, 
           deleteTask: deleteTask, 
@@ -120,7 +129,7 @@ export const App = () => {
       }>
         <TaskList 
           tasks={filteredInputByText} />
-      </TaskListContext.Provider>
+      </TaskListContext.Provider> */}
     </div>
   );
 };
