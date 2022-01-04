@@ -11,6 +11,9 @@ const tasksSlice = {
     },
     reducers: {
         setTasks: (state, action) => {
+            console.log('state', state);
+            console.log('action', action);
+            console.log('payload', action.payload);
             state.tasks = action.payload;
         }
         // deleteTask(state, action) {

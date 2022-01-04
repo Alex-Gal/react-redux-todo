@@ -44,18 +44,29 @@ export const App = () => {
   };
 
   const doneTask = (selectedId) => {
-    const callback = (prevTasks) => {
-      const newTasksArr = prevTasks.map((item) => {
+      const newTasks = tasks.map((item) => {
         const {id, active} = item;
         return {
           ...item,
           active: id === selectedId ? !active : active
         };
       });
-      return (prevTasks = newTasksArr);
-    };
-    setTasks(callback);
+      setTasksAction(newTasks);
   };
+
+  // const doneTask = (selectedId) => {
+  //   const callback = (prevTasks) => {
+  //     const newTasksArr = prevTasks.map((item) => {
+  //       const {id, active} = item;
+  //       return {
+  //         ...item,
+  //         active: id === selectedId ? !active : active
+  //       };
+  //     });
+  //     return (prevTasks = newTasksArr);
+  //   };
+  //   setTasks(callback);
+  // };
 
   const changeTaskImportance = (selectedId) => {
     const callback = (prevTasks) => {
