@@ -11,10 +11,13 @@ const tasksSlice = {
     },
     reducers: {
         setTasks: (state, action) => {
-            console.log('state', state);
-            console.log('action', action);
-            console.log('payload', action.payload);
             state.tasks = action.payload;
+        },
+        doneTask(state, action) {
+            state.tasks = action.payload;
+        },
+        addTask: (state, action) => {
+            state.tasks.push(action.payload);
         }
         // deleteTask(state, action) {
         //     console.log(state);
@@ -28,10 +31,7 @@ const tasksSlice = {
         //     console.log('state', state);
         //     console.log('action', action);
         // },
-        // doneTask(state, action) {
-        //     console.log('state', state);
-        //     console.log('action', action);
-        // },
+
         // changeTaskImportance(state, action) {
         //     console.log('state', state);
         //     console.log('action', action);
