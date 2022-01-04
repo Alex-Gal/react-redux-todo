@@ -1,8 +1,6 @@
 import {combineReducers} from '@reduxjs/toolkit';
-import {reducer as filterInputTextReducer} from './filterInputText';
-import {reducer as taskItemReducer} from './task-item';
+import {reducer as tasksReducer} from './tasks';
 
 export const reducers = combineReducers({
-    filterInputTextReducer,
-    taskItemReducer
+    tasksReducer
 });

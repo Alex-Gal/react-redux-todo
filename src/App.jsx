@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {Provider} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+// import {actions} from './store/reducers/tasks';
+import {setTasksAction} from './store/actions/tasksActions';
+
 import {TaskList} from './components/task-list/TaskList';
 import {ControlsBar} from './components/controls-bar/ControlsBar';
 import {LoadTasks} from './components/task-list/load-tasks/LoadTasks';
@@ -7,15 +10,23 @@ import {TaskListContext} from './components/task-list/TaskListContext';
 import {ControlsBarContext} from './components/controls-bar/ControlsBarContext';
 
 export const App = () => {
-  
-  const [tasks, setTasks] = useState(null);
+  const {tasks} = useSelector((state) => state.tasksReducer);
+  // const tasksReducer = useSelector((state) => state.tasksReducer);
+  const dispatch = useDispatch();
+
+  // dispatch(actions.increment())
+  // const {setTasks} = actions;
+  console.log('tasks', tasks);
+  // console.log('setTasks', setTasks);
+  // const [tasks, setTasks] = useState(null);
+
   const [displayedList, setDisplayedList] = useState('active');
   const [filterInput, setFilterInput] = useState('');
   const [isTasksLoaded, setIsTasksLoaded] = useState(false);
 
   useEffect(() => {
     LoadTasks().then((data) => {
-      setTasks(data);
+      setTasksAction(data);
       setIsTasksLoaded(true);
     });
   }, []);
