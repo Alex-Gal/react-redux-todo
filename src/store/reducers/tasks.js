@@ -18,8 +18,10 @@ const tasksSlice = {
         },
         addTask: (state, action) => {
             state.tasks.push(action.payload);
+        },
+        deleteTask(state, action) {
+            state.tasks = action.payload;
         }
-        // deleteTask(state, action) {
         //     console.log(state);
         //     console.log(action);
         //     console.log(action.payload);

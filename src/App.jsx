@@ -52,12 +52,16 @@ export const App = () => {
 
   //Не готово!!!!!!!!!!!!!!1
   const deleteTask = (selectedId) => {
-    const callback = (prevTasks) => {
-      const newTasksArr = prevTasks.filter((item) => item.id !== selectedId);
-      return (prevTasks = newTasksArr);
-    };
-    setTasks(callback);
+      const newTasks = tasks.filter((item) => item.id !== selectedId);
+      setTasksAction(newTasks);
   };
+  // const deleteTask = (selectedId) => {
+  //   const callback = (prevTasks) => {
+  //     const newTasksArr = prevTasks.filter((item) => item.id !== selectedId);
+  //     return (prevTasks = newTasksArr);
+  //   };
+  //   setTasks(callback);
+  // };
 
   const changeTaskImportance = (selectedId) => {
     const callback = (prevTasks) => {
