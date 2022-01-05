@@ -15,8 +15,6 @@ export const App = () => {
   const [displayedList, setDisplayedList] = useState('active');
   const [filterInput, setFilterInput] = useState('');
 
-  // const [isTasksLoaded, setIsTasksLoaded] = useState(false);
-
   useEffect(() => {
     LoadTasks().then((data) => {
       setTasksAction(data);
@@ -27,9 +25,7 @@ export const App = () => {
   if (!isTasksLoaded) {
     return <div>Loading...</div>;
   }
-
   //Готово
-
   const addNewTask = (newTask) => {
     const newTasks = [...tasks];
     newTasks.push(newTask);
@@ -63,7 +59,7 @@ export const App = () => {
     setTasksAction(newTasks);
   };
 
-  //Не готово!!!!!!!!!!!!!!1
+  // Не готово!!!!!!!!!!!!!!1
   // const [displayedList, setDisplayedList] = useState('active');
   // const [filterInput, setFilterInput] = useState('');
 
