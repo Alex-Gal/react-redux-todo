@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import {TaskListContext} from '../TaskListContext';
-// import {doneTaskAction} from '../../../store/actions/tasksActions';
 
 export const TaskItem = ({id, name, important, active}) => {
     const {toggleTaskImportance, deleteTask, doneTask} = useContext(TaskListContext);

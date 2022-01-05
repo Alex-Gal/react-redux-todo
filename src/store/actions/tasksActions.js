@@ -3,10 +3,3 @@ import {store} from '../store';
 
 export const setTasksAction = (payload) => store.dispatch(taskActions.setTasks(payload));
 export const isTasksLoadedAction = (payload) => store.dispatch(taskActions.setIsTasksLoaded(payload));
-
-
-
-// export const addTaskAction = (payload) => store.dispatch(taskActions.addTask(payload));
-// export const deleteTaskAction = (payload) => store.dispatch(taskActions.deleteTask(payload));
-// export const doneTaskAction = (payload) => store.dispatch(taskActions.doneTask(payload));
-// export const changeTaskImportanceAction = (payload) => store.dispatch(taskActions.changeTaskImportance(payload));

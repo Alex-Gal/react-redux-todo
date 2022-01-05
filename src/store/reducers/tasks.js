@@ -5,10 +5,6 @@ const tasksSlice = {
     initialState: {
         tasks: null,
         isTasksLoaded: false
-        // someInputStr: 'someInputStr',
-        // filterStr: '',
-        // comments: null,
-        // isShowCommentsWithLike: true
     },
     reducers: {
         setTasks: (state, action) => {
@@ -17,30 +13,6 @@ const tasksSlice = {
         setIsTasksLoaded: (state, action) => {
             state.isTasksLoaded = action.payload;
         }
-
-        // doneTask(state, action) {
-        //     state.tasks = action.payload;
-        // },
-        // addTask: (state, action) => {
-        //     state.tasks.push(action.payload);
-        // },
-        // deleteTask(state, action) {
-        //     state.tasks = action.payload;
-        // },
-        // toggleTaskImportance(state, action) {
-        //     state.tasks = action.payload;
-        // }
-        // changeTaskImportance(state, action) {
-        //     console.log('state', state);
-        //     console.log('action', action);
-        // },
-        // addNewTask(state, action) {
-        //     console.log('state', state);
-        //     console.log('action', action);
-        // }
-        // filterInputText: (state, payload) => {
-        //     state.someInitialState = action.payload;
-        // }
     }
 };
 
