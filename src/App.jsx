@@ -50,34 +50,24 @@ export const App = () => {
     setTasksAction(newTasks);
   };
 
-  //Не готово!!!!!!!!!!!!!!1
   const deleteTask = (selectedId) => {
       const newTasks = tasks.filter((item) => item.id !== selectedId);
       setTasksAction(newTasks);
   };
-  // const deleteTask = (selectedId) => {
-  //   const callback = (prevTasks) => {
-  //     const newTasksArr = prevTasks.filter((item) => item.id !== selectedId);
-  //     return (prevTasks = newTasksArr);
-  //   };
-  //   setTasks(callback);
-  // };
 
-  const changeTaskImportance = (selectedId) => {
-    const callback = (prevTasks) => {
-
-      const newTasksArr = prevTasks.map((item) => {
+  const toggleTaskImportance = (selectedId) => {
+      const newTasks = tasks.map((item) => {
         const {id, important} = item;
         return {
           ...item,
           important: id === selectedId ? !important : important
         };
       });
-      return (prevTasks = newTasksArr);
-    };
-    setTasks(callback);
+    setTasksAction(newTasks);
   };
 
+  //Не готово!!!!!!!!!!!!!!1
+  
   const changeDisplayedListHandler = (displayedList) => {
     setDisplayedList(displayedList);
   };
@@ -98,12 +88,6 @@ export const App = () => {
     }
     return tasks.filter(({name}) => name.toLowerCase().includes(filterInput.toLowerCase()));
   };
-  // const filterInputText = (tasks, filterInput) => {
-  //   if (filterInput === '') {
-  //     return tasks;
-  //   } 
-  //   return tasks.filter(({name}) => name.toLowerCase().includes(filterInput.toLowerCase()));
-  // };
 
   const filteredTasks = changeDisplayedList(tasks, displayedList);
   const filteredInputByText = filterInputText(filteredTasks, filterInput);
@@ -121,10 +105,9 @@ export const App = () => {
 
       <TaskListContext.Provider value={
         {
-          changeTaskImportance: changeTaskImportance,
+          toggleTaskImportance: toggleTaskImportance,
           deleteTask: deleteTask,
           doneTask: doneTask
-          // doneTask: doneTask
         }
       }>
         <TaskList

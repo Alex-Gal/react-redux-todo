@@ -12,28 +12,20 @@ const tasksSlice = {
     reducers: {
         setTasks: (state, action) => {
             state.tasks = action.payload;
-        },
-        doneTask(state, action) {
-            state.tasks = action.payload;
-        },
-        addTask: (state, action) => {
-            state.tasks.push(action.payload);
-        },
-        deleteTask(state, action) {
-            state.tasks = action.payload;
         }
-        //     console.log(state);
-        //     console.log(action);
-        //     console.log(action.payload);
-        //     console.log(action.payload.id);
-        //     state.tasks = state.tasks.filter((tasks) => tasks.id !== action.payload.id);
-        //     // const newTasksArr = prevTasks.filter((item) => item.id !== selectedId);
-        //     // return (prevTasks = newTasksArr);
-
-        //     console.log('state', state);
-        //     console.log('action', action);
+        
+        // doneTask(state, action) {
+        //     state.tasks = action.payload;
         // },
-
+        // addTask: (state, action) => {
+        //     state.tasks.push(action.payload);
+        // },
+        // deleteTask(state, action) {
+        //     state.tasks = action.payload;
+        // },
+        // toggleTaskImportance(state, action) {
+        //     state.tasks = action.payload;
+        // }
         // changeTaskImportance(state, action) {
         //     console.log('state', state);
         //     console.log('action', action);

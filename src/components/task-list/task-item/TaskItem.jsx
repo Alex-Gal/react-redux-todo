@@ -4,10 +4,7 @@ import {TaskListContext} from '../TaskListContext';
 // import {doneTaskAction} from '../../../store/actions/tasksActions';
 
 export const TaskItem = ({id, name, important, active}) => {
-
-    // const {changeTaskImportance, deleteTask} = useContext(TaskListContext);
-    
-    const {changeTaskImportance, deleteTask, doneTask} = useContext(TaskListContext);
+    const {toggleTaskImportance, deleteTask, doneTask} = useContext(TaskListContext);
 
     return (
         <div className={'TaskItem'}>
@@ -19,9 +16,8 @@ export const TaskItem = ({id, name, important, active}) => {
 
             <div className={'TasksButtonBlock'}>
                 <button onClick={() => doneTask(id)} className={active ? 'TasksButton' : 'NotActiveTask'}>Done</button>
-                {/* <button onClick={() => doneTaskAction({id})} className={active ? 'TasksButton' : 'NotActiveTask'}>Done</button> */}
                 <button onClick={() => deleteTask(id)} className={'TasksButton'}>Delete</button>
-                <button onClick={() => changeTaskImportance(id)} className={'TasksButton'}>Importance</button>
+                <button onClick={() => toggleTaskImportance(id)} className={'TasksButton'}>Importance</button>
             </div>
         </div>
     );
