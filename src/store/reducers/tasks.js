@@ -3,7 +3,8 @@ import {createSlice} from '@reduxjs/toolkit';
 const tasksSlice = {
     name: 'tasks',
     initialState: {
-        tasks: null
+        tasks: null,
+        isTasksLoaded: false
         // someInputStr: 'someInputStr',
         // filterStr: '',
         // comments: null,
@@ -12,8 +13,11 @@ const tasksSlice = {
     reducers: {
         setTasks: (state, action) => {
             state.tasks = action.payload;
+        },
+        setIsTasksLoaded: (state, action) => {
+            state.isTasksLoaded = action.payload;
         }
-        
+
         // doneTask(state, action) {
         //     state.tasks = action.payload;
         // },

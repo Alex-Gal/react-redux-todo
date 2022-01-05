@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 // import {actions} from './store/reducers/tasks';
-import {setTasksAction, addTaskAction} from './store/actions/tasksActions';
+import {setTasksAction, isTasksLoadedAction} from './store/actions/tasksActions';
 
 import {TaskList} from './components/task-list/TaskList';
 import {ControlsBar} from './components/controls-bar/ControlsBar';
@@ -10,20 +10,17 @@ import {TaskListContext} from './components/task-list/TaskListContext';
 import {ControlsBarContext} from './components/controls-bar/ControlsBarContext';
 
 export const App = () => {
-  const {tasks} = useSelector((state) => state.tasksReducer);
-
-  const dispatch = useDispatch();
-
-  console.log('tasks', tasks);
+  const {tasks, isTasksLoaded} = useSelector((state) => state.tasksReducer);
 
   const [displayedList, setDisplayedList] = useState('active');
   const [filterInput, setFilterInput] = useState('');
-  const [isTasksLoaded, setIsTasksLoaded] = useState(false);
+
+  // const [isTasksLoaded, setIsTasksLoaded] = useState(false);
 
   useEffect(() => {
     LoadTasks().then((data) => {
       setTasksAction(data);
-      setIsTasksLoaded(true);
+      isTasksLoadedAction(true);
     });
   }, []);
 
@@ -31,7 +28,7 @@ export const App = () => {
     return <div>Loading...</div>;
   }
 
-  //Готово, но еще пропсами
+  //Готово
 
   const addNewTask = (newTask) => {
     const newTasks = [...tasks];
@@ -67,7 +64,9 @@ export const App = () => {
   };
 
   //Не готово!!!!!!!!!!!!!!1
-  
+  // const [displayedList, setDisplayedList] = useState('active');
+  // const [filterInput, setFilterInput] = useState('');
+
   const changeDisplayedListHandler = (displayedList) => {
     setDisplayedList(displayedList);
   };
@@ -99,8 +98,8 @@ export const App = () => {
         <ControlsBar
           changeDisplayedListHandler={changeDisplayedListHandler}
           displayedList={displayedList}
-          filterInput={filterInput}
           filterInputHandler={filterInputHandler} />
+          filterInput={filterInput}
       </ControlsBarContext.Provider>
 
       <TaskListContext.Provider value={
