@@ -16,6 +16,6 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
+// store.subscribe(() => {
+//   console.log(store.getState());
+// });

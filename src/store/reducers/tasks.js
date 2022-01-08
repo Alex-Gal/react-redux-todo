@@ -5,7 +5,8 @@ const tasksSlice = {
     initialState: {
         tasks: null,
         isTasksLoaded: false,
-        filterInput: ''
+        filterInput: '',
+        displayedList: 'active'
     },
     reducers: {
         setTasks: (state, action) => {
@@ -16,6 +17,9 @@ const tasksSlice = {
         },
         setFilterInput: (state, action) => {
             state.filterInput = action.payload;
+        },
+        setDisplayedList: (state, action) => {
+            state.displayedList = action.payload;
         }
     }
 };

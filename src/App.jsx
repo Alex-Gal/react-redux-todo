@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {setTasksAction, isTasksLoadedAction, setFilterInputAction} from './store/actions/tasksActions';
+import {setTasksAction, isTasksLoadedAction, setFilterInputAction, setDisplayedListAction} from './store/actions/tasksActions';
 
 import {TaskList} from './components/task-list/TaskList';
 import {ControlsBar} from './components/controls-bar/ControlsBar';
@@ -9,9 +9,7 @@ import {TaskListContext} from './components/task-list/TaskListContext';
 import {ControlsBarContext} from './components/controls-bar/ControlsBarContext';
 
 export const App = () => {
-  const {tasks, isTasksLoaded, filterInput} = useSelector((state) => state.tasksReducer);
-
-  const [displayedList, setDisplayedList] = useState('active');
+  const {tasks, isTasksLoaded, filterInput, displayedList} = useSelector((state) => state.tasksReducer);
 
   useEffect(() => {
     LoadTasks().then((data) => {
@@ -23,7 +21,7 @@ export const App = () => {
   if (!isTasksLoaded) {
     return <div>Loading...</div>;
   }
-  //Готово
+
   const addNewTask = (newTask) => {
     const newTasks = [...tasks];
     newTasks.push(newTask);
@@ -57,12 +55,8 @@ export const App = () => {
     setTasksAction(newTasks);
   };
 
-  // Не готово!!!!!!!!!!!!!!1
-  // const [displayedList, setDisplayedList] = useState('active');
-  // const [filterInput, setFilterInput] = useState('');
-
   const changeDisplayedListHandler = (displayedList) => {
-    setDisplayedList(displayedList);
+    setDisplayedListAction(displayedList);
   };
 
   const changeDisplayedList = (tasks, displayedList) => displayedList === 'all'
@@ -91,9 +85,7 @@ export const App = () => {
       <ControlsBarContext.Provider value={{addNewTask: addNewTask}}>
         <ControlsBar
           changeDisplayedListHandler={changeDisplayedListHandler}
-          displayedList={displayedList}
           filterInputHandler={filterInputHandler} />
-        {/* filterInput={filterInput} */}
       </ControlsBarContext.Provider>
 
       <TaskListContext.Provider value={
