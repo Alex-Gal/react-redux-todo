@@ -1,6 +1,7 @@
 import {actions as taskActions} from '../reducers/tasks';
 import {store} from '../store';
 
-export const deleteTaskAction = (payload) => store.dispatch(taskActions.deleteTask(payload));
-export const doneTaskAction = (payload) => store.dispatch(taskActions.doneTask(payload));
-export const changeTaskImportanceAction = (payload) => store.dispatch(taskActions.changeTaskImportance(payload));
+export const setTasksAction = (payload) => store.dispatch(taskActions.setTasks(payload));
+export const isTasksLoadedAction = (payload) => store.dispatch(taskActions.setIsTasksLoaded(payload));
+export const setFilterInputAction = (payload) => store.dispatch(taskActions.setFilterInput(payload));
+export const setDisplayedListAction = (payload) => store.dispatch(taskActions.setDisplayedList(payload));

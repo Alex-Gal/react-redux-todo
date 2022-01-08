@@ -3,49 +3,25 @@ import {createSlice} from '@reduxjs/toolkit';
 const tasksSlice = {
     name: 'tasks',
     initialState: {
-        tasks: [
-            {id: 1, name: 'Task1', important: true, active: true},
-            {id: 2, name: 'Task2', important: false, active: false},
-            {id: 3, name: 'Task3', important: true, active: true},
-          ]
-        // someInputStr: 'someInputStr',
-        // filterStr: '',
-        // comments: null,
-        // isShowCommentsWithLike: true
+        tasks: null,
+        isTasksLoaded: false,
+        filterInput: '',
+        displayedList: 'active'
     },
     reducers: {
-        deleteTask(state, action) {
-            console.log(state);
-            console.log(action);
-            console.log(action.payload);
-            console.log(action.payload.id);
-            state.tasks = state.tasks.filter((tasks) => tasks.id !== action.payload.id);
-            // const newTasksArr = prevTasks.filter((item) => item.id !== selectedId);
-            // return (prevTasks = newTasksArr);
-
-            console.log('state', state);
-            console.log('action', action);
+        setTasks: (state, action) => {
+            state.tasks = action.payload;
         },
-        doneTask(state, action) {
-            console.log('state', state);
-            console.log('action', action);
+        setIsTasksLoaded: (state, action) => {
+            state.isTasksLoaded = action.payload;
         },
-        changeTaskImportance(state, action) {
-            console.log('state', state);
-            console.log('action', action);
+        setFilterInput: (state, action) => {
+            state.filterInput = action.payload;
         },
-        addNewTask(state, action) {
-            console.log('state', state);
-            console.log('action', action);
-        },
-        // filterInputText: (state, payload) => {
-        //     state.someInitialState = action.payload;
-        // }
+        setDisplayedList: (state, action) => {
+            state.displayedList = action.payload;
+        }
     }
 };
 
-// export const {deleteTask, doneTask, changeTaskImportance, addNewTask} = tasksSlice.actions;
-// export default tasksSlice.reducer;
-
-// Для использования actinons и reducer из отдельного файла
 export const {actions, reducer} = createSlice(tasksSlice);
