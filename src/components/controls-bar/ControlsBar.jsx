@@ -1,13 +1,13 @@
 import React from 'react';
 import {Form} from './Form';
 import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
 
-export const ControlsBar = ({filterInput, filterInputHandler}) => {
-    // const filterInputFunc = (e) => {
-    //     filterInputHandler(e.target.value);
-    // };
+export const ControlsBar = ({filterInputHandler}) => {
+    const {filterInput} = useSelector((state) => state.tasksReducer);
 
     return (
+
         <div className={'ControlsBar'}>
             <input value={filterInput} onChange={(e) => filterInputHandler(e.target.value)} className='ControlsBarInput' type='text'
                    placeholder='Search'/>
@@ -28,7 +28,12 @@ const localization = {
 const ControlsButtons = ({changeDisplayedListHandler, displayedList}) => (
     <div className={'ControlsBarButtons'}>
         {btnTypesArr.map((btnType) =>
-            <ControlsBtn key={btnType} onClick={changeDisplayedListHandler} displayedList={displayedList} btnType={btnType} localization={localization} />
+            <ControlsBtn 
+                key={btnType} 
+                onClick={changeDisplayedListHandler} 
+                displayedList={displayedList} 
+                btnType={btnType} 
+                localization={localization} />
         )}
     </div>
 );
@@ -42,11 +47,9 @@ const ControlsBtn = ({onClick, displayedList, btnType, localization}) => (
 
 ControlsBar.propTypes = {
     displayedList: PropTypes.string.isRequired,
-    filterInput: PropTypes.string.isRequired,
     filterInputHandler: PropTypes.func.isRequired,
     changeDisplayedListHandler: PropTypes.func.isRequired
 };
-
 
 // import React from 'react';
 // import { Form } from './Form';

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-// import {actions} from './store/reducers/tasks';
-import {setTasksAction, isTasksLoadedAction} from './store/actions/tasksActions';
+import {setTasksAction, isTasksLoadedAction, setFilterInputAction} from './store/actions/tasksActions';
 
 import {TaskList} from './components/task-list/TaskList';
 import {ControlsBar} from './components/controls-bar/ControlsBar';
@@ -10,10 +9,9 @@ import {TaskListContext} from './components/task-list/TaskListContext';
 import {ControlsBarContext} from './components/controls-bar/ControlsBarContext';
 
 export const App = () => {
-  const {tasks, isTasksLoaded} = useSelector((state) => state.tasksReducer);
+  const {tasks, isTasksLoaded, filterInput} = useSelector((state) => state.tasksReducer);
 
   const [displayedList, setDisplayedList] = useState('active');
-  const [filterInput, setFilterInput] = useState('');
 
   useEffect(() => {
     LoadTasks().then((data) => {
@@ -44,18 +42,18 @@ export const App = () => {
   };
 
   const deleteTask = (selectedId) => {
-      const newTasks = tasks.filter((item) => item.id !== selectedId);
-      setTasksAction(newTasks);
+    const newTasks = tasks.filter((item) => item.id !== selectedId);
+    setTasksAction(newTasks);
   };
 
   const toggleTaskImportance = (selectedId) => {
-      const newTasks = tasks.map((item) => {
-        const {id, important} = item;
-        return {
-          ...item,
-          important: id === selectedId ? !important : important
-        };
-      });
+    const newTasks = tasks.map((item) => {
+      const {id, important} = item;
+      return {
+        ...item,
+        important: id === selectedId ? !important : important
+      };
+    });
     setTasksAction(newTasks);
   };
 
@@ -74,7 +72,7 @@ export const App = () => {
       : tasks.filter((item) => !item.active);
 
   const filterInputHandler = (filterInput) => {
-    setFilterInput(filterInput);
+    setFilterInputAction(filterInput);
   };
 
   const filterInputText = (tasks, filterInput) => {
@@ -95,7 +93,7 @@ export const App = () => {
           changeDisplayedListHandler={changeDisplayedListHandler}
           displayedList={displayedList}
           filterInputHandler={filterInputHandler} />
-          filterInput={filterInput}
+        {/* filterInput={filterInput} */}
       </ControlsBarContext.Provider>
 
       <TaskListContext.Provider value={
