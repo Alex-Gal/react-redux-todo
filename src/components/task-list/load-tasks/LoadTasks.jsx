@@ -5,7 +5,7 @@ export const LoadTasks = () => new Promise ((resolve, reject) => {
 });
 
 const tasks = [
-    {id: 1, name: 'Task1', important: true, active: true},
-    {id: 2, name: 'Task2', important: false, active: false},
-    {id: 3, name: 'Task3', important: true, active: true}
+    {id: 1, name: 'Call to Andrey', important: true, active: true},
+    {id: 2, name: 'Cook dinner', important: false, active: false},
+    {id: 3, name: 'Play with daughter', important: true, active: true}
   ];
