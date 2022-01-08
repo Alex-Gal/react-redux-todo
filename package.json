@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/Alex-Gal/react-redux-todo/issues"
   },
-  "homepage": "./",
+  "homepage": "./dist/",
   "dependencies": {
     "core-js": "^3.19.1",
     "prop-types": "^15.7.2",
