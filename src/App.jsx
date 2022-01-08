@@ -4,11 +4,9 @@ import {setTasksAction, isTasksLoadedAction, setFilterInputAction, setDisplayedL
 
 import {TaskList} from './components/task-list/TaskList';
 import {ControlsBar} from './components/controls-bar/ControlsBar';
-// import {LoadTasks} from './components/task-list/load-tasks/LoadTasks';
+import {LoadTasks} from './components/task-list/load-tasks/LoadTasks';
 import {TaskListContext} from './components/task-list/TaskListContext';
 import {ControlsBarContext} from './components/controls-bar/ControlsBarContext';
-import { useSelector, useDispatch } from 'react-redux';
-// import {deleteTask} from './store/reducers/tasks';
 
 export const App = () => {
   const {tasks, isTasksLoaded, filterInput, displayedList} = useSelector((state) => state.tasksReducer);
@@ -20,9 +18,9 @@ export const App = () => {
     });
   }, []);
 
-  // if (!isTasksLoaded) {
-  //   return <div>Loading...</div>;
-  // }
+  if (!isTasksLoaded) {
+    return <div>Loading...</div>;
+  }
 
   const addNewTask = (newTask) => {
     const newTasks = [...tasks];
@@ -56,9 +54,6 @@ export const App = () => {
     });
     setTasksAction(newTasks);
   };
-
-
-//filters block
 
   const changeDisplayedListHandler = (displayedList) => {
     setDisplayedListAction(displayedList);
@@ -102,7 +97,7 @@ export const App = () => {
       }>
         <TaskList
           tasks={filteredInputByText} />
-      </TaskListContext.Provider> */}
+      </TaskListContext.Provider>
     </div>
   );
 };
